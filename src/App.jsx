@@ -70,7 +70,7 @@ function AppContent() {
  */
 function App() {
   return (
-    <Router>
+    <Router basename="/frontend_s7_react">
       <AppContent />
     </Router>
   );

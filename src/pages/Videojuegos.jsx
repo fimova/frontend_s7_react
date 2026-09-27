@@ -8,7 +8,7 @@ import { videojuegos } from '../data/videojuegos';
  */
 const Videojuegos = ({ onAgregarAlCarrito }) => {
     
-    const [busqueda, setBusqueda] = useState('');
+    const [busqueda, setBusqueda] = useState(''); // estados con []
     const [mensaje, setMensaje] = useState('');
 
     /**

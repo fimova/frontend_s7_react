@@ -25,7 +25,7 @@ const Home = () => {
                 ride: 'carousel'
             });
         }
-    }, []);
+    }, []); // indica que solo se ejecuta al montar el componente
 
     return (
         <main>
@@ -63,7 +63,7 @@ const Home = () => {
                         <div className="carousel-inner">
                             <div className="carousel-item active">
                                 <img 
-                                    src="/img/rotr.jpg"
+                                    src="img/rotr.jpg"
                                     className="d-block w-100"
                                     alt="Rise of the Ronin"
                                 />
@@ -71,7 +71,7 @@ const Home = () => {
 
                             <div className="carousel-item">
                                 <img 
-                                    src="/img/tkrbwarriors.jpg"
+                                    src="img/tkrbwarriors.jpg"
                                     className="d-block w-100"
                                     alt="Touken Ranbu Warriors"
                                 />
@@ -79,7 +79,7 @@ const Home = () => {
 
                             <div className="carousel-item">
                                 <img 
-                                    src="/img/meikoi.jpg"
+                                    src="img/meikoi.jpg"
                                     className="d-block w-100"
                                     alt="Meiji Tokyo Renka"
                                 />
@@ -87,7 +87,7 @@ const Home = () => {
 
                             <div className="carousel-item">
                                 <img 
-                                    src="/img/wwht.jpg"
+                                    src="img/wwht.jpg"
                                     className="d-block w-100"
                                     alt="We were here together"
                                 />
