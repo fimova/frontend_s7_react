@@ -63,7 +63,7 @@ const Home = () => {
                         <div className="carousel-inner">
                             <div className="carousel-item active">
                                 <img 
-                                    src="img/rotr.jpg"
+                                    src="/frontend_s7_react/img/rotr.jpg"
                                     className="d-block w-100"
                                     alt="Rise of the Ronin"
                                 />
@@ -71,7 +71,7 @@ const Home = () => {
 
                             <div className="carousel-item">
                                 <img 
-                                    src="img/tkrbwarriors.jpg"
+                                    src="/frontend_s7_react/img/tkrbwarriors.jpg"
                                     className="d-block w-100"
                                     alt="Touken Ranbu Warriors"
                                 />
@@ -79,7 +79,7 @@ const Home = () => {
 
                             <div className="carousel-item">
                                 <img 
-                                    src="img/meikoi.jpg"
+                                    src="/frontend_s7_react/img/meikoi.jpg"
                                     className="d-block w-100"
                                     alt="Meiji Tokyo Renka"
                                 />
@@ -87,7 +87,7 @@ const Home = () => {
 
                             <div className="carousel-item">
                                 <img 
-                                    src="img/wwht.jpg"
+                                    src="/frontend_s7_react/img/wwht.jpg"
                                     className="d-block w-100"
                                     alt="We were here together"
                                 />
