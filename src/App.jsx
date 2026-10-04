@@ -6,6 +6,7 @@ import Cart from './components/Cart';
 import Home from './pages/Home';
 import Videojuegos from './pages/Videojuegos';
 import Accesorios from './pages/Accesorios';
+import Recomendados from './pages/Recomendados';
 import Contacto from './pages/Contacto';
 import { useCart } from './hooks/useCart';
 import './styles/App.css';
@@ -15,7 +16,7 @@ import './styles/App.css';
  */
 function AppContent() {
   const location = useLocation();
-  
+
   // Hook personalizado del carrito
   const {
     carrito,
@@ -35,13 +36,17 @@ function AppContent() {
       {/* Rutas de la aplicación */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route 
-          path="/videojuegos" 
-          element={<Videojuegos onAgregarAlCarrito={agregarAlCarrito} />} 
+        <Route
+          path="/videojuegos"
+          element={<Videojuegos onAgregarAlCarrito={agregarAlCarrito} carrito={carrito} />}
+        />
+        <Route
+          path="/accesorios"
+          element={<Accesorios onAgregarAlCarrito={agregarAlCarrito} carrito={carrito} />}
         />
         <Route 
-          path="/accesorios" 
-          element={<Accesorios onAgregarAlCarrito={agregarAlCarrito} />} 
+          path="/recomendados" 
+          element={<Recomendados onAgregarAlCarrito={agregarAlCarrito} carrito={carrito} />} 
         />
         <Route path="/contacto" element={<Contacto />} />
       </Routes>
@@ -53,7 +58,7 @@ function AppContent() {
       <CartButton cantidadProductos={contarProductos()} />
 
       {/* Carrito lateral (offcanvas) */}
-      <Cart 
+      <Cart
         carrito={carrito}
         onEliminar={eliminarDelCarrito}
         onDisminuir={disminuirCantidad}

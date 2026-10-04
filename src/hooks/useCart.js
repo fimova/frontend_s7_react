@@ -2,18 +2,46 @@ import { useState, useEffect } from 'react';
 
 /**
  * Hook para gestionar el carrito de compras
- * Persiste en localStorage
+ * Persiste en localStorage 
  */
 export const useCart = () => {
-    // Estado del carrito (se carga desde localStorage)
+
+    // Estado del carrito (se carga desde localStorage con validación)
     const [carrito, setCarrito] = useState(() => {
-        const carritoGuardado = localStorage.getItem('carritoMibu');
-        return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+        try {
+            const carritoGuardado = localStorage.getItem('carritoMibu');
+
+            // Si no hay nada guardado, retornar array vacío
+            if (!carritoGuardado) {
+                return [];
+            }
+
+            // Intentar parsear el JSON
+            const carritoParseado = JSON.parse(carritoGuardado);
+
+            // Validar que sea un array válido
+            if (!Array.isArray(carritoParseado)) {
+                console.warn('Datos de carrito inválidos, inicializando vacío');
+                localStorage.removeItem('carritoMibu');
+                return [];
+            }
+
+            return carritoParseado;
+        } catch (error) {
+            // Si hay error en parseo, limpiar localStorage y retornar array vacío
+            console.error('Error al cargar carrito de localStorage:', error);
+            localStorage.removeItem('carritoMibu');
+            return [];
+        }
     });
 
     // Guardar en localStorage cada vez que cambie el carrito
     useEffect(() => {
-        localStorage.setItem('carritoMibu', JSON.stringify(carrito));
+        try {
+            localStorage.setItem('carritoMibu', JSON.stringify(carrito));
+        } catch (error) {
+            console.error('Error al guardar carrito en localStorage:', error);
+        }
     }, [carrito]);
 
     /**
@@ -23,14 +51,12 @@ export const useCart = () => {
         const productoExistente = carrito.find(item => item.id === producto.id);
 
         if (productoExistente) {
-            // Si existe, aumentar cantidad
             setCarrito(carrito.map(item =>
                 item.id === producto.id
                     ? { ...item, cantidad: item.cantidad + 1 }
                     : item
             ));
         } else {
-            // Si no existe, agregarlo con cantidad 1
             setCarrito([...carrito, { ...producto, cantidad: 1 }]);
         }
     };
@@ -47,7 +73,7 @@ export const useCart = () => {
      */
     const disminuirCantidad = (id) => {
         const producto = carrito.find(item => item.id === id);
-        
+
         if (producto.cantidad === 1) {
             eliminarDelCarrito(id);
         } else {

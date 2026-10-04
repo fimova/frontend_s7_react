@@ -51,6 +51,12 @@ const Header = ({ rutaActual }) => {
                                 Accesorios
                             </Link>
                             <Link 
+                                className={`nav-link ${rutaActual === '/recomendados' ? 'active' : ''}`}
+                                to="/recomendados"
+                            >
+                                Recomendados
+                            </Link>
+                            <Link 
                                 className={`nav-link ${rutaActual === '/contacto' ? 'active' : ''}`}
                                 to="/contacto"
                             >

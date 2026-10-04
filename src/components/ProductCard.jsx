@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useState } from 'react'; 
 
 /**
  * Tarjeta de producto individual
- * Muestra información del producto y botón para agregar al carrito
  */
-const ProductCard = ({ producto, onAgregar }) => {
+const ProductCard = ({ producto, onAgregar, productoEnCarrito }) => {
     
     const [isHover, setIsHover] = useState(false);
 
@@ -51,12 +50,25 @@ const ProductCard = ({ producto, onAgregar }) => {
                         </p>
                     )}
 
-                    <button 
-                        className="btn boton-producto"
-                        onClick={() => onAgregar(producto)}
-                    >
-                        Agregar al carrito
-                    </button>
+                    {/* Botón que cambia según si está en el carrito */}
+                    {productoEnCarrito ? (
+                        <button 
+                            className="btn boton-producto"
+                            disabled
+                            style={{ opacity: 0.6, cursor: 'not-allowed' }}
+                            title="Este producto ya está en tu carrito"
+                        >
+                            ¡En carrito!
+                        </button>
+                    ) : (
+                        <button 
+                            className="btn boton-producto"
+                            onClick={() => onAgregar(producto)}
+                            title="Agregar este producto al carrito"
+                        >
+                            Agregar al carrito
+                        </button>
+                    )}
                 </div>
             </article>
         </div>
